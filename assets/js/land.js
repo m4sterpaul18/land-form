@@ -14,16 +14,6 @@ $(function(){
 		})
 	});
 
-	//add land appraisal
-	$('#addLandAppraisal').on('click',function(){
-		addLandAppraisal();
-	});
-
-	//add other improvements
-	$('#addOtherImprovements').on('click',function(){
-		addOtherImprovements();
-	});
-
 	// confirm submition
 	$('#submit').on('click',function(){
 		if(!$('input,select').val()){
@@ -44,10 +34,30 @@ $(function(){
 		
 	});
 
+
+/////////////////////////////////////////////////////////
+
 	//update kind value
 	$('select[name="kind"]').on('click',function(){
 		const kind = $(this).val();
 		kindUnitValue(kind);
+	});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+	let target = $('#appaisal-container');
+
+	//add land appraisal
+	$('#addLandAppraisal').on('click',function(){
+		addLandAppraisal();
+	});
+	//remove land appraisal
+	$('#deleteLandAppraisal').on('click',function(){
+		removeLandAppraisal();
+	});
+
+	//auto calculate
+	$('input[name="area"],input[name="unit-value"]').change(function(){
+    	appraisalBaseMarketValue();
 	});
 
 	$('#calculate-land-appraisal').on('click',function(){
@@ -58,9 +68,15 @@ $(function(){
 		$('input[id="total-appraisal"]').attr('value',total);
 	})
 
+	function appraisalBaseMarketValue(){
+		let area = $('input[name="area"]').val();
+		let unitValue = $('input[name="unit-value"]').val();
+		let marketValue = $('input[name="appraisal-base-market-value"]').attr('value',area*unitValue);
+	}
+
 	//add land appraisal input fields
 	function addLandAppraisal(){
-		$('#appaisal-container').append(
+		target.append(
 					`<div class="row">
 					<div class="form-group col-md-3">
 						<label>Classification</label>
@@ -93,13 +109,40 @@ $(function(){
 					</div>
 					<div class="form-group col-md-2">
 						<label>Base Market Value</label>
-						<input class="form-control" type="number" min="0" name="appraisal-base-market-value">
+						<input class="form-control" type="number" min="0" name="appraisal-base-market-value" readonly>
 					</div>
 				</div>`);
 	}
 
+	function removeLandAppraisal(){
+		if(target.children().length > 0){
+			target.children().last().remove();
+		}
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	let improvementsTarget = $('#improvements-container');
+
+	//add other improvements
+	$('#addOtherImprovements').on('click',function(){
+		addOtherImprovements();
+	});
+	$('#deleteOtherImprovements').on('click',function(){
+		removeOtherImprovements();
+	});
+
+	$('input[name="total-number-improvement"],input[name="unit-value-improvement"]').change(function(){
+    	improvementsBaseMarketValue();
+	});
+
+	function improvementsBaseMarketValue(){
+		let totalNumber = $('input[name="total-number-improvement"]').val();
+		let unitValue = $('input[name="unit-value-improvement"]').val();
+		let marketValue = $('input[name="base-value-improvement"]').attr('value',totalNumber*unitValue);
+	}
+
 	function addOtherImprovements(){
-		$('#improvements-container').append(`<div class="form-group col-md-6">
+		improvementsTarget.append(`<div class="row">
+					<div class="form-group col-md-6">
 						<label>Kind</label>
 						<select name="kind" class="form-select">
 							<!-- mga cocoland? -->
@@ -150,9 +193,19 @@ $(function(){
 					</div>
 					<div class="form-group col-md-2">
 						<label>Base Market Value</label>
-						<input class="form-control" type="number" name="base-value-improvement" min="0">
-					</div>`);
+						<input class="form-control" type="number" name="base-value-improvement" min="0" readonly>
+					</div>
+				</div>`);
 	}
+
+	function removeOtherImprovements(){
+		if(improvementsTarget.children().length > 0){
+			improvementsTarget.children().last().remove();
+		}
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//function for kind unit value
 	function kindUnitValue(kind){
 		const targetunit = $('input[name="unit-value-improvement"]');
