@@ -23,10 +23,11 @@
 
 </head>
 <body>
-<div class="container p-5 my-5 bg-dark text-light" style="border:2px solid black; border-radius:20px;">
-	<h1 class="text-center my-3">
-	REAL PROPERTY FIELD APPRAISAL & ASSESSMENT SHEET - LAND / OTHER IMPROVEMENTS
-	</h1>
+<div class="container p-5 my-5 text-light" style="border:2px solid black; border-radius:20px; background-color: #0c2723">
+	<h4 class="text-center my-3">
+	REAL PROPERTY FIELD APPRAISAL & ASSESSMENT SHEET - 
+	</h4>
+	<h1 class="text-center my-3" style="color:#29c3ad!important;">LAND / OTHER IMPROVEMENTS</h1>
 	<form action="" method="POST" enctype="multipart/form-data">
 		<!----form-1(Personal Information) -->
 			<div class="row wrapper">
@@ -105,7 +106,7 @@
 			</div>
 
 			<!-- property location -->
-			<h3 class="mt-5">Propery Location</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Propery Location</h3>
 			<div class="row wrapper">
 				<div class="form-group col-md-6">
 					<label>No./Street</label>
@@ -126,7 +127,7 @@
 			</div>
 
 			<!-- property boundaries -->
-			<h3 class="mt-5">Property Boundaries</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Property Boundaries</h3>
 			<div class="row wrapper">
 				<div class="col-md-6">
 					<div class="form-group col-md-12">
@@ -155,8 +156,12 @@
 			</div>
 
 			<!-- Land Appraisal -->
-			<h3 class="mt-5">Land Appraisal</h3>
-			<button id="addLandAppraisal" type="button" class="btn btn-success my-2 btn-md">Add +</button>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Land Appraisal</h3>
+			<div class="btn-group">
+				<button id="addLandAppraisal" type="button" class="btn btn-success my-3 btn-md">Add</button>
+				<button id="deleteLandAppraisal" type="button" class="btn btn-danger my-3 btn-md">Delete</button>
+			</div>
+
 			<div class="wrapper">
 				<div id="appaisal-container">
 					<div class="row">
@@ -191,12 +196,12 @@
 						</div>
 						<div class="form-group col-md-2">
 							<label>Base Market Value</label>
-							<input class="form-control" type="number" min="0" name="appraisal-base-market-value">
+							<input class="form-control" type="number" min="0" name="appraisal-base-market-value" readonly>
 						</div>
 					</div>
 				</div>
-			<div class="col-md-3 mt-3">
-					<h5>Total Value (PHP)</h5>
+				<div class="col-md-3 mt-3">
+						<h5>Total Value (PHP)</h5>
 					<input class="form-control" type="number" id="total-appraisal" readonly>
 				</div>
 				<button id="calculate-land-appraisal" type="button" class="btn btn-success my-3" style="width:100%;">Calculate</button>
@@ -206,74 +211,79 @@
 
 
 			<!-- Other Improvements -->
-			<h3 class="mt-5">Other Improvements</h3>
-			<button id="addOtherImprovements" type="button" class="btn btn-success my-2">Add +</button>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Other Improvements</h3>
+			<div class="btn-group">
+				<button id="addOtherImprovements" type="button" class="btn btn-success my-3">Add</button>
+				<button id="deleteOtherImprovements" type="button" class="btn btn-danger my-3">Delete</button>
+			</div>
 			<div class="wrapper">
-				<div id="improvements-container" class="row">
-					<div class="form-group col-md-6">
-						<label>Kind</label>
-						<select name="kind" class="form-select">
-							<!-- mga cocoland? -->
-							<option selected value="">Choose</option>
-							<option value="Abaca">Abaca(per group)</option>
-							<option value="Atis">Atis</option>
-							<option value="Avocado">Avocado</option>
-							<option value="Bamboo">Bamboo (tangnan,patong,per clump)</option>
-							<option value="Bagacay,Cayali">Bagacay, Cayali (per clump)</option>
-							<option value="Banana">Banana (per group)</option>
-							<option value="Cacao">Cacao</option>
-							<option value="Caimito">Caimito</option>
-							<option value="Cahil">Cahil (Orange)</option>
-							<option value="Calamansi">Calamansi (Lemon)</option>
-							<option value="Camachile">Camachile</option>
-							<option value="Camote">Camote(per hill)</option>
-							<option value="Cassava">Cassava(per hill)</option>
-							<option value="Chico">Chico</option>
-							<option value="Citrus">Citrus(Suha)</option>
-							<option value="Coconut-tree">Coconut Tree(bearing or productive)</option>
-							<option value="Coffee">Coffee</option>
-							<option value="Guyabano">Guyabano</option>
-							<option value="Gabi">Gabi</option>
-							<option value="Igot/Malaigang">Igot or Malaigang</option>
-							<option value="Jackfruit">Jackfruit(Langka)</option>
-							<option value="Lansones">Lansones</option>
-							<option value="Mabolo">Mabolo</option>
-							<option value="Macopa">Macopa</option>
-							<option value="Mango">Mango</option>
-							<option value="Nipa">Nipa(per hill)</option>
-							<option value="Palawan">Palawan(per hill)</option>
-							<option value="Pili">Pili</option>
-							<option value="Pineapple">Pineapple</option>
-							<option value="Santol">Santol</option>
-							<option value="Tambis">Tambis</option>
-							<option value="Tamarindo">Tamarindo</option>
-							<option value="Molave,Narra,Mohogany,Gemelina,Acacia,Balite">Molave,Narra,Mohogany,Gemelina,Acacia,Balite (10 inches diameter)</option>
-							<option value="Other-Trees">Other Trees (Ornamental)</option>
-						</select>
-					</div>
-					<div class="form-group col-md-2">
-						<label>Total Number</label>
-						<input class="form-control" type="number" name="total-number-improvement" min="0">
-					</div>
-					<div class="form-group col-md-2">
-						<label>Unit Value</label>
-						<input class="form-control" type="number" name="unit-value-improvement" min="0">
-					</div>
-					<div class="form-group col-md-2">
-						<label>Base Market Value</label>
-						<input class="form-control" type="number" name="base-value-improvement" min="0">
+				<div id="improvements-container">
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label>Kind</label>
+							<select name="kind" class="form-select">
+								<!-- mga cocoland? -->
+								<option selected value="">Choose</option>
+								<option value="Abaca">Abaca(per group)</option>
+								<option value="Atis">Atis</option>
+								<option value="Avocado">Avocado</option>
+								<option value="Bamboo">Bamboo (tangnan,patong,per clump)</option>
+								<option value="Bagacay,Cayali">Bagacay, Cayali (per clump)</option>
+								<option value="Banana">Banana (per group)</option>
+								<option value="Cacao">Cacao</option>
+								<option value="Caimito">Caimito</option>
+								<option value="Cahil">Cahil (Orange)</option>
+								<option value="Calamansi">Calamansi (Lemon)</option>
+								<option value="Camachile">Camachile</option>
+								<option value="Camote">Camote(per hill)</option>
+								<option value="Cassava">Cassava(per hill)</option>
+								<option value="Chico">Chico</option>
+								<option value="Citrus">Citrus(Suha)</option>
+								<option value="Coconut-tree">Coconut Tree(bearing or productive)</option>
+								<option value="Coffee">Coffee</option>
+								<option value="Guyabano">Guyabano</option>
+								<option value="Gabi">Gabi</option>
+								<option value="Igot/Malaigang">Igot or Malaigang</option>
+								<option value="Jackfruit">Jackfruit(Langka)</option>
+								<option value="Lansones">Lansones</option>
+								<option value="Mabolo">Mabolo</option>
+								<option value="Macopa">Macopa</option>
+								<option value="Mango">Mango</option>
+								<option value="Nipa">Nipa(per hill)</option>
+								<option value="Palawan">Palawan(per hill)</option>
+								<option value="Pili">Pili</option>
+								<option value="Pineapple">Pineapple</option>
+								<option value="Santol">Santol</option>
+								<option value="Tambis">Tambis</option>
+								<option value="Tamarindo">Tamarindo</option>
+								<option value="Molave,Narra,Mohogany,Gemelina,Acacia,Balite">Molave,Narra,Mohogany,Gemelina,Acacia,Balite (10 inches diameter)</option>
+								<option value="Other-Trees">Other Trees (Ornamental)</option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label>Total Number</label>
+							<input class="form-control" type="number" name="total-number-improvement" min="0">
+						</div>
+						<div class="form-group col-md-2">
+							<label>Unit Value</label>
+							<input class="form-control" type="number" name="unit-value-improvement" min="0">
+						</div>
+						<div class="form-group col-md-2">
+							<label>Base Market Value</label>
+							<input class="form-control" type="number" name="base-value-improvement" min="0" readonly>
+						</div>
 					</div>
 				</div>
 				
 				<div class="col-md-3 mt-3">
-					<h5>Total Value</h5>
-					<p>PHP 0.00</p>
+					<h5>Total Value (PHP)</h5>
+					<input class="form-control" type="number" id="total-improvements" readonly>
 				</div>
-				<button id="calculate-improvements" class="btn btn-success btn-block my-3">Calculate</button>
+				<button type="button" id="calculate-improvements" class="btn btn-success btn-block my-3" style="width: 100%">Calculate</button>
 			</div>
 
 			<!-- Market Value -->
-			<h3 class="mt-5">Market Value</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Market Value</h3>
 			<div class="row wrapper">
 				<div class="form-group col-md-4">
 					<label>Base Market Value</label>
@@ -303,7 +313,7 @@
 			</div>
 
 			<!-- Property Assessment -->
-			<h3 class="mt-5">Property Assessment</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Property Assessment</h3>
 			<div class="row wrapper">
 				<div class="form-group col-md-3">
 					<label>Actual Use</label>
@@ -358,7 +368,7 @@
 			</div>
 
 			<!-- Appraised and assessed by -->
-			<h3 class="mt-5">Appraised/Assessed By</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Appraised/Assessed By</h3>
 			<div class="row wrapper">
 				<div class="col-md-6">
 					<div class="row">
@@ -402,7 +412,7 @@
 			</div>
 
 			<!-- memoranda -->
-			<h3 class="mt-5">Memoranda</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">Memoranda</h3>
 			<div class="form-group">
 				<textarea class="form-control" rows="3" name="memoranda"></textarea>
 			</div>
@@ -419,7 +429,7 @@
 			</div>
 
 			<!-- record of superseded assessment -->
-			<h3 class="mt-5">RECORD OF SUPERSEDED ASSESSMENT</h3>
+			<h3 class="mt-5" style="color:#29c3ad!important;">RECORD OF SUPERSEDED ASSESSMENT</h3>
 			<div class="row wrapper">
 				<div class="form-group col-md-12">
 					<label>PIN</label>
